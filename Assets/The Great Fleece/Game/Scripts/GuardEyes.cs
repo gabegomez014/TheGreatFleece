@@ -10,6 +10,7 @@ public class GuardEyes : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            AudioManager.Instance.StopMusic();
             gameOverCutscene.SetActive(true);
         }
     }

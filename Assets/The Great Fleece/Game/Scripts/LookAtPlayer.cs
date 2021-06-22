@@ -7,12 +7,6 @@ public class LookAtPlayer : MonoBehaviour
     public Transform target;
     public Transform startTransform;
 
-    private void Start()
-    {
-        transform.position = startTransform.position;
-        transform.rotation = startTransform.rotation; 
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -20,5 +14,11 @@ public class LookAtPlayer : MonoBehaviour
         {
             transform.LookAt(target);
         }
+    }
+
+    public void SetCamera()
+    {
+        transform.position = startTransform.position;
+        transform.rotation = startTransform.rotation;
     }
 }

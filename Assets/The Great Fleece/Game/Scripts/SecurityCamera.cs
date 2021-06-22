@@ -28,6 +28,7 @@ public class SecurityCamera : MonoBehaviour
     IEnumerator WaitBeforeGameOver()
     {
         yield return new WaitForSeconds(0.5f);
+        AudioManager.Instance.StopMusic();
         gameOverCutscene.SetActive(true);
     }
 }
