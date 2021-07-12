@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,9 +35,14 @@ public class GameManager : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        _introCutscene.SetActive(true);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Update()
@@ -51,5 +57,10 @@ public class GameManager : MonoBehaviour
             AudioManager.Instance.PlayMusic();
             _musicPlayed = true;
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _introCutscene.SetActive(true);
     }
 }
